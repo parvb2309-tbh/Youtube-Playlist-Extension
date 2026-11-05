@@ -18,6 +18,13 @@ A Chrome (Manifest V3) extension that adds a panel to the left sidebar of any Yo
 
 After changing the code, click the reload icon on the extension card and refresh the YouTube tab.
 
+## Optional: YouTube API key
+The extension works without a key. A key gives exact view counts and enables sorting by likes. In Google Cloud Console, create an API key, restrict it to **YouTube Data API v3** and leave **Application restrictions** set to **None**, then paste it into the extension's settings page.
+
+![Creating an API key in Google Cloud Console](docs/create-api-key.png)
+
+Full step-by-step instructions: [API_KEY_GUIDE.md](API_KEY_GUIDE.md).
+
 ## Notes
 - YouTube loads long playlists 100 videos at a time. Sorting automatically scrolls to load the whole playlist first, then returns you to where you were. Totals show a `+` while the list is only partially loaded.
 - Unavailable (private or deleted) videos are listed last and are excluded from totals.
