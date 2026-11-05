@@ -1,0 +1,6 @@
+# secrets and local-only files
+.env
+.env.*
+image.png
+node_modules/
+*.log

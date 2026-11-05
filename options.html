@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YouTube Playlist Toolkit – Settings</title>
+  <style>
+    :root { color-scheme: light dark; --bg:#fff; --fg:#0f0f0f; --muted:#606060; --line:#d9d9d9; --accent:#065fd4; --card:#f7f7f7; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#0f0f0f; --fg:#f1f1f1; --muted:#aaa; --line:#303030; --accent:#3ea6ff; --card:#1a1a1a; } }
+    body { background:var(--bg); color:var(--fg); font:15px/1.5 system-ui, Segoe UI, Roboto, sans-serif; margin:0; padding:32px 16px; }
+    main { max-width:640px; margin:0 auto; }
+    h1 { font-size:22px; margin:0 0 4px; }
+    p.sub { color:var(--muted); margin:0 0 24px; }
+    section { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:16px; }
+    h2 { font-size:16px; margin:0 0 6px; }
+    label { display:block; font-weight:600; margin:12px 0 4px; }
+    input[type=password], input[type=text], select { width:100%; box-sizing:border-box; padding:8px 10px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--fg); font:inherit; }
+    .row { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+    button { padding:8px 14px; border-radius:18px; border:1px solid var(--line); background:var(--bg); color:var(--fg); font:inherit; cursor:pointer; }
+    button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+    #status { margin-top:10px; min-height:1.4em; }
+    .ok { color:#2ba640; } .err { color:#d93025; }
+    small { color:var(--muted); }
+    ul { margin:6px 0 0 18px; padding:0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>YouTube Playlist Toolkit</h1>
+  <p class="sub">Settings are stored in your browser (Chrome sync) and never sent anywhere except googleapis.com.</p>
+
+  <section>
+    <h2>YouTube Data API key <small>(optional)</small></h2>
+    <small>Without a key the extension reads view counts from the page (rounded, e.g. “1.2M views”). With a key you get:</small>
+    <ul>
+      <li>Exact view counts</li>
+      <li>Sorting by <b>likes</b></li>
+      <li>Exact upload dates and durations</li>
+    </ul>
+    <small>See <b>API_KEY_GUIDE.md</b> in the extension folder for how to create one (free).</small>
+    <label for="apiKey">API key</label>
+    <input id="apiKey" type="password" placeholder="AIza..." autocomplete="off" spellcheck="false" />
+    <div class="row">
+      <button id="toggle">Show</button>
+      <button id="test">Test key</button>
+      <button id="clear">Clear</button>
+      <button id="save" class="primary">Save</button>
+    </div>
+    <div id="status" role="status"></div>
+  </section>
+
+  <section>
+    <h2>Defaults</h2>
+    <label for="defaultSort">Sort option used for the main “sort” button</label>
+    <select id="defaultSort">
+      <option value="views">Views</option>
+      <option value="duration">Duration</option>
+      <option value="date">Upload date</option>
+      <option value="likes">Likes (needs API key)</option>
+      <option value="title">Title</option>
+    </select>
+    <div class="row"><button id="saveDefaults" class="primary">Save defaults</button></div>
+  </section>
+</main>
+<script src="options.js"></script>
+</body>
+</html>

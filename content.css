@@ -1,0 +1,73 @@
+/* Explicit colours: the playlist header sits on a tinted gradient that overrides YouTube's own text variables. */
+#ypt-panel {
+  --ypt-bg: rgba(0, 0, 0, 0.06);
+  --ypt-fg: #0f0f0f;
+  --ypt-muted: #4d4d4d;
+  --ypt-line: rgba(0, 0, 0, 0.15);
+  --ypt-accent: #065fd4;
+  --ypt-btn: rgba(0, 0, 0, 0.08);
+  --ypt-btn-fg: #fff;
+  --ypt-btn-bg: #0f0f0f;
+}
+html[dark] #ypt-panel {
+  --ypt-bg: rgba(0, 0, 0, 0.35);
+  --ypt-fg: #f1f1f1;
+  --ypt-muted: #c4c4c4;
+  --ypt-line: rgba(255, 255, 255, 0.2);
+  --ypt-accent: #3ea6ff;
+  --ypt-btn: rgba(255, 255, 255, 0.14);
+  --ypt-btn-fg: #0f0f0f;
+  --ypt-btn-bg: #f1f1f1;
+}
+#ypt-panel {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--ypt-bg);
+  color: var(--ypt-fg);
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#ypt-panel * { box-sizing: border-box; }
+#ypt-panel .ypt-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+#ypt-panel .ypt-title { font-size: 14px; font-weight: 600; }
+#ypt-panel .ypt-mode { font-size: 11px; color: var(--ypt-muted); }
+#ypt-panel .ypt-mode a { color: var(--ypt-accent); cursor: pointer; text-decoration: none; }
+#ypt-panel .ypt-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+#ypt-panel button, #ypt-panel select {
+  font: inherit; font-size: 12.5px; font-weight: 500; color: var(--ypt-fg);
+  background: var(--ypt-btn);
+  border: 1px solid var(--ypt-line); border-radius: 16px; padding: 5px 12px; cursor: pointer;
+}
+#ypt-panel select { max-width: 100%; padding-right: 6px; }
+#ypt-panel select option { color: #0f0f0f; background: #fff; }
+#ypt-panel button:hover:not(:disabled) { filter: brightness(1.2); }
+#ypt-panel button:disabled { opacity: 0.5; cursor: default; }
+#ypt-panel button.ypt-primary { background: var(--ypt-btn-bg); color: var(--ypt-btn-fg); border-color: transparent; }
+#ypt-panel button.ypt-active { outline: 2px solid var(--ypt-accent); }
+#ypt-panel .ypt-sep { height: 1px; background: var(--ypt-line); margin: 10px 0; }
+#ypt-panel .ypt-stats { display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; }
+#ypt-panel .ypt-stats dt { color: var(--ypt-muted); }
+#ypt-panel .ypt-stats dd { margin: 0; text-align: right; font-weight: 500; font-variant-numeric: tabular-nums; }
+#ypt-panel .ypt-note { color: var(--ypt-muted); font-size: 11.5px; margin-top: 6px; }
+#ypt-panel .ypt-note.ypt-err { color: #d93025; }
+#ypt-panel .ypt-bar { height: 4px; border-radius: 2px; background: var(--ypt-line); overflow: hidden; margin-top: 6px; }
+#ypt-panel .ypt-bar > i { display: block; height: 100%; width: 0; background: var(--ypt-accent); transition: width 0.2s; }
+
+/* Force readable text: YouTube's header styles otherwise leak a dark text colour into the panel. */
+#ypt-panel,
+#ypt-panel .ypt-title,
+#ypt-panel .ypt-stats dd,
+#ypt-panel select { color: var(--ypt-fg) !important; }
+#ypt-panel .ypt-stats dt,
+#ypt-panel .ypt-mode,
+#ypt-panel .ypt-note { color: var(--ypt-muted) !important; }
+#ypt-panel .ypt-note.ypt-err { color: #ff6b61 !important; }
+#ypt-panel .ypt-mode a { color: var(--ypt-accent) !important; }
+#ypt-panel button { color: var(--ypt-fg) !important; }
+#ypt-panel button.ypt-primary { color: var(--ypt-btn-fg) !important; }
+#ypt-panel .ypt-stats dd, #ypt-panel .ypt-title { text-shadow: none; }
+#ypt-panel .ypt-stats { font-size: 13px; }
